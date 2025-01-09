@@ -18,12 +18,17 @@ df = ROOT.RDataFrame(tree)
 df = df.Define("Invariant_Mass", "get_invariant_mass(MCParticles)")
 
 # Fill the histogram with the calculated energies
-# We defined 100 bins between 0 and 1000 GeV
 h = df.Histo1D(("MCParticles_InvariantMass", "", *(100, 0, 120)), "Invariant_Mass")
 
 # Draw the histogram
 c = ROOT.TCanvas()
+c.SetLogy()
+
+# Draw the histogram
 h.Draw()
+h.Draw()
+h.GetXaxis().SetTitle("Invariant Mass [GeV]")
+h.GetYaxis().SetTitle("Number of Events")
 c.Draw()
 
 # save the histogram
